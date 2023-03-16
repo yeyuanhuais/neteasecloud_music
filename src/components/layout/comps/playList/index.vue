@@ -1,0 +1,30 @@
+<script setup lang="ts">
+import IconPark from "@/components/iconPark.vue";
+import { usePlayerStore } from "@/stores/player";
+import { Delete } from "@icon-park/vue-next";
+import { storeToRefs } from "pinia";
+import PlayListSongItem from "./comps/playListSongItem.vue";
+
+const { showPlayList, playListCount, playList, id } = storeToRefs(usePlayerStore());
+const { play, clearPlayList } = usePlayerStore();
+</script>
+<template>
+  <el-drawer v-model="showPlayList" direction="rtl" :withHeader="false" size="320px" class="play-list">
+    <div class="h-screen flex flex-col">
+      <div class="p-2.5 flex-shrink-0">
+        <div class="text-xl">播放列表</div>
+        <div class="text-xs mt-1 flex justify-between items-center">
+          <div>共 {{ playListCount }} 首歌曲</div>
+          <div class="text-dc flex items-center hover-text" @click="clearPlayList">
+            <IconPark :icon="Delete" />
+            <span class="ml-0.5">清空</span>
+          </div>
+        </div>
+      </div>
+      <div class="flex-1 overflow-hidden">
+        <el-scrollbar> <PlayListSongItem v-for="song in playList" :key="song.id" :song="song" :active="song.id === id" @dbclick="play(song.id)" /> </el-scrollbar>
+      </div>
+    </div>
+  </el-drawer>
+</template>
+<style lang="scss"></style>
