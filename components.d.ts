@@ -9,7 +9,6 @@ export {}
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
-    copy: typeof import('./src/components/layout/comps/playList/index copy.vue')['default']
     CoverPlay: typeof import('./src/components/coverPlay.vue')['default']
     ElAffix: typeof import('element-plus/es')['ElAffix']
     ElAvatar: typeof import('element-plus/es')['ElAvatar']
@@ -45,7 +44,6 @@ declare module '@vue/runtime-core' {
     PlayerVolumeSlider: typeof import('./src/components/layout/comps/footer/comps/playerVolumeSlider.vue')['default']
     PlayList: typeof import('./src/components/layout/comps/playList/index.vue')['default']
     PlayListSongItem: typeof import('./src/components/layout/comps/playList/comps/playListSongItem.vue')['default']
-    PlaySong: typeof import('./src/components/layout/comps/footer/comps/playSong.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     SearchPop: typeof import('./src/components/layout/comps/header/comps/searchPop.vue')['default']

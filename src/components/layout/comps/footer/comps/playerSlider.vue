@@ -12,7 +12,7 @@ const { duration, currentTime, onSliderInput, onSliderChange } = toRefs(usePlaye
 
 <style lang="scss" scoped>
 .player-slider {
-  :deep {
+  ::deep {
     .el-slider {
       height: 10px;
 

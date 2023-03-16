@@ -32,7 +32,7 @@ const { song, songUrl } = toRefs(usePlayerStore());
 
 <style lang="scss" scoped>
 .player-song {
-  :deep {
+  ::deep {
     .badge {
       .el-badge__content.is-fixed {
         @apply scale-75 bg-white text-slate-500 text-xs bg-opacity-50 border-0 left-2 -top-2;

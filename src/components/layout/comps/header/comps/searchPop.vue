@@ -18,12 +18,12 @@ const hotClick = (text: string) => {
   showSearchView.value = true;
 };
 onMounted(async () => {
-  const { data } = await _axios.get<{ data: SearchHotDetail[] }>("/search/hot/detail");
+  const { data } = await _axios.get<{ data: SearchHotDetail[] }, any>("/search/hot/detail");
   searchHot.value = data;
 });
 </script>
 <template>
-  <el-popover popper-style="max-width:auto;padding:0" :visable="showSearchView" width="250px" trigger="click">
+  <el-popover popper-style="max-width:auto;padding:0" :visible="showSearchView" width="250px" trigger="click">
     <template #reference>
       <el-input placeholder="搜索音乐、MV、歌单" :prefix-icon="Search" clearable @input="searchInput" v-model="searchKeyword" @focus="showSearchView = true" @focusout="showSearchView = false" />
     </template>

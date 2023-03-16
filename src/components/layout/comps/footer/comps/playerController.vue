@@ -23,7 +23,7 @@ const { toggleLoop, loopType, next, prev, togglePlay, isPause } = toRefs(usePlay
 </template>
 
 <style lang="scss" scoped>
-:deep {
+::deep {
   .el-popover .el-popper {
     min-width: auto;
   }

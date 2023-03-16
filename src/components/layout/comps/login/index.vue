@@ -17,7 +17,7 @@ const timing = ref(0); // 验证码倒计时
 const loginType = ref<number>(0); // 登录方式 0-扫码，1-账号密码，2-邮箱登录,3-验证码登录
 const { showLogin } = storeToRefs(useUserStore());
 const { onLoginPhone, onLoginEmail, checkLogin } = useUserStore();
-let timer: number | undefined;
+let timer: any;
 const formRef = ref<FormInstance>();
 const form = reactive({ phone: "", password: "", captcha: "", email: "" });
 const { pause, resume } = useIntervalFn(
@@ -207,7 +207,7 @@ onUnmounted(() => {
 </template>
 <style lang="scss" scoped>
 .input-with-button {
-  :deep {
+  ::deep {
     .el-input-group__append {
       padding: 0;
       width: 80%;

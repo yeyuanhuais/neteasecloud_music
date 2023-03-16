@@ -20,7 +20,7 @@ const { menus, currentMenu, onTabClick } = useMusicMenu();
 
 <style lang="scss" scoped>
 .music {
-  :deep {
+  ::deep {
     .el-tabs__nav-warp::after {
       height: 0;
     }

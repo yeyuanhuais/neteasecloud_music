@@ -6,6 +6,7 @@ import { TextMessage, MusicList } from "@icon-park/vue-next";
 import { storeToRefs } from "pinia";
 
 const { currentTime, duration, playListCount, showPlayList } = storeToRefs(usePlayerStore());
+console.log("%c currentTime", "font-size:13px; background:pink; color:#bf2c9f;", currentTime);
 </script>
 <template>
   <div class="flex justify-end items-center gap-x-2.5">

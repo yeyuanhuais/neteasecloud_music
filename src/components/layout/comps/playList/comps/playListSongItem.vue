@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import IconPark from "@/components/iconPark.vue";
 import type { Song } from "@/models/song";
-import type { useFormatDuring } from "@/plugins/utils";
+import { useFormatDuring } from "@/plugins/utils";
 import { Youtube } from "@icon-park/vue-next";
 import { useRouter } from "vue-router";
 

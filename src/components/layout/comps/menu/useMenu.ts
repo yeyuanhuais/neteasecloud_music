@@ -4,11 +4,12 @@ import { useRoute, useRouter } from "vue-router";
 interface ItemMenu {
   name: string;
   key: string;
-  icon: any;
-  theme: "outline" | "filled" | "two-tone" | "multi-color";
+  icon?: any;
+  theme?: "outline" | "filled" | "two-tone" | "multi-color";
+  menus?: ItemMenu[];
 }
 export function useMenu() {
-  const menus = [
+  const menus: ItemMenu[] = [
     {
       name: "在线音乐",
       key: "onlineMusic",
