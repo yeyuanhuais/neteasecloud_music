@@ -24,7 +24,7 @@ const getTrackAll = async (id: number) => {
 };
 </script>
 <template>
-  <Title routeName="playlist" title="推荐歌单" class="mt-4" />
+  <Title routeName="category" title="推荐歌单" class="mt-4" />
   <div class="grid grid-flow-row grid-cols-3 lg:grid-cols-5 gap-5">
     <template v-for="(item, index) in playlistProgram" :key="item.id">
       <div v-if="index < 5" class="relative">
