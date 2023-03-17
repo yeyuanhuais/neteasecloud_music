@@ -153,4 +153,16 @@ export interface PlaylistProgram {
   type?: any;
 }
 
-export interface PlaylistTrackAll {}
+export interface PlaylistHighqualityTag {
+  activity?: boolean;
+  category: number;
+  hot?: boolean;
+  imgId?: number;
+  imgUrl?: any;
+  name: string;
+  resourceCount?: number;
+  resourceType?: number;
+  type?: number;
+  childId?: number;
+  children?: any;
+}

@@ -1,12 +1,12 @@
 import { ref, computed } from "vue";
 import { defineStore } from "pinia";
 import _axios from "@/plugins/axios";
-import type { PlaylistProgram, PlaylistTrackAll } from "@/models/playlist";
+import type { PlaylistProgram } from "@/models/playlist";
 import type { Song } from "@/models/song";
 
 export const usePlaylistStore = defineStore("playlist", () => {
   const playlistProgram = ref<PlaylistProgram[]>([]);
-  const playlistTrackAll = ref<PlaylistTrackAll[]>([]);
+  const playlistTrackAll = ref<Song[]>([]);
   /* ======== 推荐歌单 ======== */
   const getPlaylistProgram = async (limit: number = 10, offset: number = 0) => {
     if (playlistProgram.value.length > 0) return;

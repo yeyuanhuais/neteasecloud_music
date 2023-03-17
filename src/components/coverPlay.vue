@@ -9,7 +9,7 @@ defineProps<{ picUrl: string; playCount?: number; name?: string; showPlayCount?:
   <div class="cover-play-image" :class="{ 'aspect-square': !video, 'aspect-video': video }">
     <el-image :src="picUrl" :alt="name" class="w-full bg-gray-50 object-cover" />
     <div class="mask flex justify-center items-center">
-      <IconPark :icon="PlayOne" theme="filled" class="text-white play-icon opacity-0 transition-opacity hover-text" :size="50" G />
+      <IconPark :icon="PlayOne" theme="filled" class="text-white play-icon opacity-0 transition-opacity hover-text" :size="50" />
     </div>
     <div v-if="showPlayCount" class="play-count">
       <IconPark :icon="video ? Play : Headset" class="mr-1" :size="12" />
@@ -27,7 +27,7 @@ defineProps<{ picUrl: string; playCount?: number; name?: string; showPlayCount?:
   }
 
   .play-count {
-    @apply absolute bottom-1 right-1 text-white text-xs bg-black bg-opacity-80 pl-2 pr-2 rounded-full pt-0.5 pb-0.5 flex items-center transition-all scale-90;
+    @apply absolute bottom-1 right-1 text-black text-xs bg-white bg-opacity-80 pl-2 pr-2 rounded-full pt-0.5 pb-0.5 flex items-center transition-all scale-90;
   }
 
   &:hover {
