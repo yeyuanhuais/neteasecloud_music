@@ -20,13 +20,11 @@ const { menus, currentMenu, onTabClick } = useMusicMenu();
 
 <style lang="scss" scoped>
 .music {
-  ::deep {
-    .el-tabs__nav-warp::after {
-      height: 0;
-    }
-    .el-tabs__header {
-      @apply m-0;
-    }
+  ::v-deep(.el-tabs__nav-warp::after) {
+    height: 0;
+  }
+  .el-tabs__header {
+    @apply m-0;
   }
 }
 </style>

@@ -9,6 +9,9 @@ export {}
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
+    CommentItem: typeof import('./src/components/comments/commentItem.vue')['default']
+    Comments: typeof import('./src/components/comments/index.vue')['default']
+    copy: typeof import('./src/components/title copy.vue')['default']
     CoverPlay: typeof import('./src/components/coverPlay.vue')['default']
     ElAffix: typeof import('element-plus/es')['ElAffix']
     ElAvatar: typeof import('element-plus/es')['ElAvatar']
@@ -28,8 +31,11 @@ declare module '@vue/runtime-core' {
     ElScrollbar: typeof import('element-plus/es')['ElScrollbar']
     ElSlider: typeof import('element-plus/es')['ElSlider']
     ElSwitch: typeof import('element-plus/es')['ElSwitch']
+    ElTable: typeof import('element-plus/es')['ElTable']
+    ElTableColumn: typeof import('element-plus/es')['ElTableColumn']
     ElTabPane: typeof import('element-plus/es')['ElTabPane']
     ElTabs: typeof import('element-plus/es')['ElTabs']
+    ElTag: typeof import('element-plus/es')['ElTag']
     Footer: typeof import('./src/components/layout/comps/footer/index.vue')['default']
     Header: typeof import('./src/components/layout/comps/header/index.vue')['default']
     IconPark: typeof import('./src/components/iconPark.vue')['default']
@@ -37,6 +43,7 @@ declare module '@vue/runtime-core' {
     Login: typeof import('./src/components/layout/comps/login/index.vue')['default']
     Menu: typeof import('./src/components/layout/comps/menu/index.vue')['default']
     More: typeof import('./src/components/layout/comps/header/comps/more.vue')['default']
+    MoreText: typeof import('./src/components/moreText.vue')['default']
     PlayerAction: typeof import('./src/components/layout/comps/footer/comps/playerAction.vue')['default']
     PlayerController: typeof import('./src/components/layout/comps/footer/comps/playerController.vue')['default']
     PlayerSlider: typeof import('./src/components/layout/comps/footer/comps/playerSlider.vue')['default']
@@ -48,6 +55,7 @@ declare module '@vue/runtime-core' {
     RouterView: typeof import('vue-router')['RouterView']
     SearchPop: typeof import('./src/components/layout/comps/header/comps/searchPop.vue')['default']
     SearchSuggest: typeof import('./src/components/layout/comps/header/comps/SearchSuggest.vue')['default']
+    SongListItem: typeof import('./src/components/songListItem.vue')['default']
     Title: typeof import('./src/components/title.vue')['default']
     UserInfo: typeof import('./src/components/layout/comps/header/comps/userInfo.vue')['default']
   }

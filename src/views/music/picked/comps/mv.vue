@@ -20,7 +20,7 @@ onMounted(() => {
       <div v-if="index < 5" @click="router.push({ name: 'fm', query: { id: item.id } })">
         <CoverPlay :picUrl="item.picUrl" video :name="item.name" />
         <div class="truncate text-xs mt-2">{{ item.copywriter }}</div>
-        <div class="truncate text-xs mt-2 text-gray-400 hover:text-emerald-500">{{ item.artistName }}</div>
+        <div class="truncate text-xs mt-2 text-gray-400 hover-text">{{ item.artistName }}</div>
       </div>
     </template>
   </div>

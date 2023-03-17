@@ -21,7 +21,7 @@ onMounted(() => {
     <template v-for="(item, index) in toplistAnchor" :key="item.id">
       <div v-if="index < 10" @click="router.push({ name: 'fm', query: { id: item.id } })" class="flex flex-col justify-center items-center cursor-pointer">
         <img :src="item.avatarUrl" :alt="item.nickName" class="rounded-full" />
-        <div class="truncate text mt-2 hover:text-emerald-400">{{ item.nickName }}</div>
+        <div class="truncate text mt-2  hover-text">{{ item.nickName }}</div>
       </div>
     </template>
   </div>

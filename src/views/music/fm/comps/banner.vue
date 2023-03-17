@@ -41,10 +41,10 @@ const onClick = (banner: FmBanner) => {
 
 <style lang="scss" scoped>
 .swiper-banner {
-  ::deep(.swiper-wrapper) {
+  ::v-deep(.swiper-wrapper) {
     margin-bottom: 22px;
   }
-  ::deep(.swiper-pagination-bullets, .swiper-pagination-bullets.swiper-pagination-horizontal) {
+  ::v-deep(.swiper-pagination-bullets, .swiper-pagination-bullets.swiper-pagination-horizontal) {
     bottom: var(--swiper-pagination-bottom, 0px);
   }
 }

@@ -5,7 +5,6 @@ import { useRouter } from "vue-router";
 import { onMounted, ref } from "vue";
 
 const props = defineProps<{ title: string; routeName?: string; subtitle?: any; onSubtitleClick?: any }>();
-console.log("%c props", "font-size:13px; background:pink; color:#bf2c9f;", props);
 const router = useRouter();
 const subTitleVal = ref("");
 const onClick = (val?: string) => {
@@ -14,7 +13,6 @@ const onClick = (val?: string) => {
 onMounted(() => {
   if (props.subtitle && props.subtitle.length > 0) {
     subTitleVal.value = props.subtitle.first().value;
-    console.log("%c subTitleVal", "font-size:13px; background:pink; color:#bf2c9f;", subTitleVal.value);
   } else {
     subTitleVal.value = "";
   }
@@ -28,7 +26,7 @@ onMounted(() => {
         <span
           v-for="(item, index) in props.subtitle"
           :key="index"
-          class="hover:text-emerald-400 text-sm ml-3 cursor-pointer"
+          class="hover-text text-sm ml-3"
           :class="subTitleVal === item.value ? 'text-emerald-400' : 'text-neutral-400'"
           @click="
             () => {
@@ -40,7 +38,7 @@ onMounted(() => {
         </span>
       </template>
     </div>
-    <div v-if="props.routeName" class="cursor-pointer text-sm flex items-center hover:text-emerald-400" @click="onClick(props.routeName)">
+    <div v-if="props.routeName" class="text-sm flex items-center hover-text" @click="onClick(props.routeName)">
       <span>更多</span>
       <IconPark :icon="Right" :size="20" />
     </div>

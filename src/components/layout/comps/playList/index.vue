@@ -22,7 +22,9 @@ const { play, clearPlayList } = usePlayerStore();
         </div>
       </div>
       <div class="flex-1 overflow-hidden">
-        <el-scrollbar> <PlayListSongItem v-for="song in playList" :key="song.id" :song="song" :active="song.id === id" @dbclick="play(song.id)" /> </el-scrollbar>
+        <el-scrollbar>
+          <PlayListSongItem v-for="song in playList" :key="song.id" :song="song" :active="song.id === id" @dblclick="play(song.id)" />
+        </el-scrollbar>
       </div>
     </div>
   </el-drawer>

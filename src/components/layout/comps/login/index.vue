@@ -197,22 +197,20 @@ onUnmounted(() => {
         </div>
       </div>
       <div class="flex justify-around mt-5">
-        <el-button link disabled class="cursor-pointer hover:text-emerald-400" v-if="loginType !== 0" @click="loginType = 0">扫码登录</el-button>
-        <el-button link disabled class="cursor-pointer hover:text-emerald-400" v-if="loginType !== 1" @click="loginType = 1">账号登录</el-button>
-        <el-button link disabled class="cursor-pointer hover:text-emerald-400" v-if="loginType !== 3" @click="loginType = 3">验证码登录</el-button>
-        <el-button link disabled class="cursor-pointer hover:text-emerald-400" v-if="loginType !== 2" @click="loginType = 2">邮箱登录</el-button>
+        <el-button link disabled class="hover-text" v-if="loginType !== 0" @click="loginType = 0">扫码登录</el-button>
+        <el-button link disabled class="hover-text" v-if="loginType !== 1" @click="loginType = 1">账号登录</el-button>
+        <el-button link disabled class="hover-text" v-if="loginType !== 3" @click="loginType = 3">验证码登录</el-button>
+        <el-button link disabled class="hover-text" v-if="loginType !== 2" @click="loginType = 2">邮箱登录</el-button>
       </div>
     </div>
   </el-dialog>
 </template>
 <style lang="scss" scoped>
 .input-with-button {
-  ::deep {
-    .el-input-group__append {
-      padding: 0;
-      width: 80%;
-      @apply bg-emerald-400 text-white;
-    }
+  ::v-deep(.el-input-group__append) {
+    padding: 0;
+    width: 80%;
+    @apply bg-emerald-400 text-white;
   }
 }
 </style>

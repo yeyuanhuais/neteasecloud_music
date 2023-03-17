@@ -39,12 +39,10 @@ _axios.interceptors.response.use(
     return res;
   },
   (error: AxiosError) => {
-    console.log("%c error", "font-size:13px; background:pink; color:#bf2c9f;", error);
     // 处理 HTTP 网络错误
     let message = "";
     // HTTP 状态码
     const status = error.response?.status;
-    console.log("%c status", "font-size:13px; background:pink; color:#bf2c9f;", status);
     switch (status) {
       case 400:
         message = "接口不可用";

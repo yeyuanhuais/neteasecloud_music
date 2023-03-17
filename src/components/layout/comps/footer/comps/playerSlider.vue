@@ -12,34 +12,32 @@ const { duration, currentTime, onSliderInput, onSliderChange } = toRefs(usePlaye
 
 <style lang="scss" scoped>
 .player-slider {
-  ::deep {
-    .el-slider {
+  ::v-deep(.el-slider) {
+    height: 10px;
+
+    .el-slider__runway,
+    .el-slider__bar {
+      height: 2px;
+      border-radius: 0;
+    }
+
+    .el-slider__button-wrapper {
+      @apply opacity-0 transition-opacity;
+      width: 10px;
       height: 10px;
+      top: -9.5px;
+    }
 
-      .el-slider__runway,
-      .el-slider__bar {
-        height: 2px;
-        border-radius: 0;
-      }
-
+    &:hover {
       .el-slider__button-wrapper {
-        @apply opacity-0 transition-opacity;
-        width: 10px;
-        height: 10px;
-        top: -10.5px;
+        @apply opacity-100;
       }
+    }
 
-      &:hover {
-        .el-slider__button-wrapper {
-          @apply opacity-100;
-        }
-      }
-
-      .el-slider__button {
-        width: 8px;
-        height: 8px;
-        @apply bg-emerald-400;
-      }
+    .el-slider__button {
+      width: 8px;
+      height: 8px;
+      @apply bg-emerald-400;
     }
   }
 }

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { RouterView } from "vue-router";
-import { usePlayerInit } from "./stores/player";
-usePlayerInit();
+import { userPlayerInit } from "./stores/player";
+userPlayerInit();
 </script>
 
 <template>

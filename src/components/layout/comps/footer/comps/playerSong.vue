@@ -32,15 +32,13 @@ const { song, songUrl } = toRefs(usePlayerStore());
 
 <style lang="scss" scoped>
 .player-song {
-  ::deep {
-    .badge {
-      .el-badge__content.is-fixed {
-        @apply scale-75 bg-white text-slate-500 text-xs bg-opacity-50 border-0 left-2 -top-2;
-      }
-      .el-badge__content {
-        @apply scale-75 left-1 bg-stone-100 text-slate-500 bg-opacity-80 right-auto;
-        @apply dark:bg-stone-900;
-      }
+  ::v-deep(.badge) {
+    .el-badge__content.is-fixed {
+      @apply scale-75 bg-white text-slate-500 text-xs bg-opacity-50 border-0 left-2 -top-2;
+    }
+    .el-badge__content {
+      @apply scale-75 left-1 bg-stone-100 text-slate-500 bg-opacity-80 right-auto;
+      @apply dark:bg-stone-900;
     }
   }
 }

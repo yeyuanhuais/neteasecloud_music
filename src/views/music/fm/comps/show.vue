@@ -22,9 +22,9 @@ onMounted(() => {
         <img :src="item.coverUrl" class="w-20 rounded" />
         <div class="ml-4 text-sm">
           <div class="truncate">{{ item.name }}</div>
-          <div class="truncate mt-2 text-gray-400 hover:text-emerald-500">{{ item.mainSong.artists.first().name }}</div>
+          <div class="truncate mt-2 text-gray-400 hover-text">{{ item.mainSong.artists.first().name }}</div>
         </div>
-        <IconPark class="justify-self-end text-stone-300 hover:text-emerald-400 ml-auto" :size="20" :icon="Like" />
+        <IconPark class="justify-self-end text-stone-300 hover-text ml-auto" :size="20" :icon="Like" />
       </div>
     </template>
   </div>

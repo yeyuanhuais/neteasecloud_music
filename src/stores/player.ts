@@ -1,10 +1,8 @@
-import type { SearchSuggest } from "@/models/search";
 import type { Song } from "@/models/song";
 import type { SongUrl } from "@/models/songUrl";
 import _axios from "@/plugins/axios";
-import type { Arrayable } from "element-plus/es/utils";
 import { defineStore, storeToRefs } from "pinia";
-import { onMounted, watch } from "vue";
+import { onMounted, onUnmounted, watch } from "vue";
 
 const KEYS = {
   volume: "PLAYER-VOLUME",
@@ -64,12 +62,16 @@ export const usePlayerStore = defineStore("play", {
     async play(id: number) {
       if (id === this.id) return;
       this.isPlaying = false;
-      const { data } = await _axios.get<{ data: SongUrl[] }, any>("/song/url", { params: { id } });
-      this.audio.src = data.url;
+      const { data } = await _axios.get<{ data: SongUrl[] }, any>("/song/url/v1", { params: { id, level: "standard" } });
+      const songFirst = data.first(); //取数组第一个
+      if (!data || data.length == 0) {
+        return false;
+      }
+      this.audio.src = songFirst.url;
       this.audio.play().then(res => {
         this.isPlaying = true;
-        this.songUrl = data;
-        this.url = data.url;
+        this.songUrl = songFirst;
+        this.url = songFirst.url;
         this.id = id;
         this.songDetail();
       });
@@ -214,21 +216,37 @@ export const usePlayerStore = defineStore("play", {
     },
   },
 });
-export const usePlayerInit = () => {
+
+export const userPlayerInit = () => {
   let timer: NodeJS.Timer;
-  const { init, interval, playEnd } = usePlayerStore();
-  const { ended } = storeToRefs(usePlayerStore());
-  watch(ended, endedVal => {
-    if (!endedVal) {
-      return;
-    }
+  const { init, interval, playEnd, rePlay } = usePlayerStore();
+
+  const { ended, playList } = storeToRefs(usePlayerStore());
+
+  //监听播放结束
+  watch(ended, ended => {
+    if (!ended) return;
     playEnd();
   });
+
+  watch(
+    playList,
+    val => {
+      localStorage.setItem("playList", JSON.stringify(val));
+    },
+    { deep: true, immediate: false }
+  );
+
+  //启动定时器
   onMounted(() => {
     init();
     timer = setInterval(interval, 1000);
+    if (localStorage.getItem("playList")) {
+      playList.value = JSON.parse(localStorage.getItem("playList") || "[]") || [];
+    }
   });
-  onMounted(() => {
+  //清除定时器
+  onUnmounted(() => {
     clearInterval(timer);
   });
 };

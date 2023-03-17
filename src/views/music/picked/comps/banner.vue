@@ -9,15 +9,21 @@ import "swiper/scss/navigation";
 import "swiper/scss/pagination";
 import "swiper/scss/autoplay";
 import { onMounted, toRefs } from "vue";
+import { useRouter } from "vue-router";
 const { banners } = toRefs(useCommonStore());
 const { getBanners } = useCommonStore();
 onMounted(() => {
   getBanners();
 });
 const { play } = usePlayerStore();
+const router = useRouter();
 const onClick = (banner: Banner) => {
   if (banner.targetType === 1) {
     play(banner.targetId);
+  } else if (banner.targetType === 1000) {
+    router.push({ name: "playlist", query: { id: banner.targetId } });
+  } else if (banner.targetType === 10) {
+    router.push({ name: "album", query: { id: banner.targetId } });
   }
 };
 </script>
@@ -41,10 +47,10 @@ const onClick = (banner: Banner) => {
 
 <style lang="scss" scoped>
 .swiper-banner {
-  ::deep(.swiper-wrapper) {
+  ::v-deep(.swiper-wrapper) {
     margin-bottom: 22px;
   }
-  ::deep(.swiper-pagination-bullets, .swiper-pagination-bullets.swiper-pagination-horizontal) {
+  ::v-deep(.swiper-pagination-bullets, .swiper-pagination-bullets.swiper-pagination-horizontal) {
     bottom: var(--swiper-pagination-bottom, 0px);
   }
 }

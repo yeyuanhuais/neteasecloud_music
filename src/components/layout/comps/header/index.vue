@@ -14,7 +14,7 @@ const isDark = useDark();
   <div class="flex items-center justify-between drag h-14">
     <div class="flex items-center pl-5">
       <IconPark :icon="Left" size="22" :strokeWidth="2" class="icon-button" @click="router.back()" />
-      <IconPark :icon="Right" size="22" :strokeWidth="2" class="icon-button" @click="router.back()" />
+      <IconPark :icon="Right" size="22" :strokeWidth="2" class="icon-button" @click="router.forward()" />
       <div class="search ml-2">
         <SearchPop />
       </div>
@@ -33,7 +33,7 @@ const isDark = useDark();
 <style lang="scss" scoped>
 .search {
   @apply text-xs;
-  ::deep(.el-input__wrapper) {
+  ::v-deep(.el-input__wrapper) {
     @apply rounded-full text-xs bg-slate-100 dark:bg-stone-900;
   }
 }

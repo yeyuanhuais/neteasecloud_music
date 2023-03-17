@@ -1,33 +1,37 @@
 export interface SongUrl {
-  id: Number;
-  url: string;
   br: number;
-  size: number;
-  md5: string;
-  code: number;
-  expi: number;
-  type: string;
-  gain: number;
-  fee: number;
-  payed: number;
-  flag: number;
   canExtend: boolean;
-  freeTrialPrivilege: RootObjectFreeTrialPrivilege;
-  freeTimeTrialPrivilege: RootObjectFreeTimeTrialPrivilege;
-  urlSource: number;
-  freeTrialInfo: {
-    start: number;
-    end: number;
+  code: number;
+  effectTypes: any;
+  encodeType: string;
+  expi: number;
+  fee: number;
+  flag: number;
+  freeTimeTrialPrivilege: {
+    remainTime: number;
+    resConsumable: boolean;
+    type: number;
+    userConsumable: boolean;
   };
-}
-export interface RootObjectFreeTrialPrivilege {
-  resConsumable: boolean;
-  userConsumable: boolean;
-}
-
-export interface RootObjectFreeTimeTrialPrivilege {
-  resConsumable: boolean;
-  userConsumable: boolean;
-  type: number;
-  remainTime: number;
+  freeTrialInfo: any;
+  freeTrialPrivilege: {
+    cannotListenReason: any;
+    listenType: any;
+    resConsumable: boolean;
+    userConsumable: boolean;
+  };
+  gain:number;
+  id: number;
+  level: string;
+  md5: string;
+  payed: number;
+  peak: number;
+  podcastCtrp: any;
+  rightSource: number;
+  size: number;
+  time: number;
+  type: string;
+  uf: any;
+  url: string;
+  urlSource: number;
 }
