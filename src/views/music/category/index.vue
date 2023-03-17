@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import PlaylistHot from "./comps/playlistHot.vue";
-import { onMounted, reactive, ref, toRefs } from "vue";
+import { onMounted, reactive, ref } from "vue";
 import type { PlaylistDetail } from "@/models/playlist";
 import CoverPlay from "@/components/coverPlay.vue";
 import { useRouter } from "vue-router";
@@ -10,8 +10,7 @@ import { usePlaylistStore } from "@/stores/playlist";
 
 const list = ref<PlaylistDetail[]>();
 
-const { playlistProgram } = toRefs(usePlaylistStore());
-const { getPlaylistProgram, getPlaylistTrackAll } = usePlaylistStore();
+const { getPlaylistTrackAll } = usePlaylistStore();
 const { pushPlayList, play } = usePlayerStore();
 const router = useRouter();
 
