@@ -1,13 +1,22 @@
-export interface FmProgram {
-  id: number;
-  type: number;
-  name: string;
+export interface DjRadios {
+  buyed: boolean;
+  category: string;
+  categoryId: number;
   copywriter: string;
+  createTime: number;
+  dj: DJ;
+  feeScope: number;
+  id: number;
+  name: string;
   picUrl: string;
-  canDislike: boolean;
-  trackNumberUpdateTime?: any;
+  playCount: number;
+  programCount: number;
+  radioFeeType: number;
+  rcmdtext: string;
+  subCount: number;
+  subed: boolean;
 }
-export interface FmBanner {
+export interface DjBanner {
   exclusive: boolean;
   pic: string;
   targetId: number;
@@ -16,7 +25,7 @@ export interface FmBanner {
   url: string;
 }
 
-export interface FmCatelist {
+export interface DjCatelist {
   id: number;
   name: string;
   pic56x56Id: number;
@@ -45,7 +54,7 @@ export interface FmCatelist {
   picWebUrl: string;
 }
 
-export interface FmProgramRecommend {
+export interface DjProgramRecommend {
   adIconInfo: any;
   alg: string;
   auditDisPlayStatus: number;
@@ -54,7 +63,7 @@ export interface FmProgramRecommend {
   bdAuditStatus: number;
   blurCoverUrl: string;
   buyed: boolean;
-  canReward: true;
+  canReward: boolean;
   categoryId: number;
   categoryName: any;
   channels: string[];
@@ -74,7 +83,7 @@ export interface FmProgramRecommend {
   h5Links: any;
   icon: any;
   id: number;
-  isPublish: true;
+  isPublish: boolean;
   likedCount: number;
   listenerCount: number;
   liveInfo: any;
@@ -107,7 +116,7 @@ export interface FmProgramRecommend {
 
 export interface DJ {
   accountStatus: number;
-  anchor: true;
+  anchor: boolean;
   authStatus: number;
   authenticationTypes: number;
   authority: number;
@@ -282,7 +291,7 @@ export interface DescPicList {
   width: number;
 }
 
-export interface FmToplist {
+export interface DjToplist {
   category: string;
   categoryId: number;
   createTime: number;
@@ -302,7 +311,7 @@ export interface FmToplist {
   subCount: number;
 }
 
-export interface FmToplistAnchor {
+export interface DjToplistAnchor {
   avatarDetail: {
     identityIconUrl: string;
     identityLevel: number;
@@ -321,4 +330,46 @@ export interface FmToplistAnchor {
   score: number;
   userFollowedCount: number;
   userType: number;
+}
+export interface DjDetail {
+  id: number;
+  name: string;
+  dj: DJ;
+  picId: number;
+  picUrl: string;
+  desc: string;
+  subCount: number;
+  shareCount: number;
+  likedCount: number;
+  programCount: number;
+  commentCount: number;
+  createTime: number;
+  categoryId: number;
+  category: string;
+  secondCategoryId: number;
+  secondCategory: string;
+  radioFeeType: number;
+  feeScope: number;
+  lastProgramCreateTime: number;
+  lastProgramId: number;
+  rcmdText: string;
+  subed: boolean;
+  commentDatas: any;
+  feeInfo: any;
+  unlockInfo: any;
+  original: boolean;
+  playCount: number;
+  privacy: boolean;
+  disableShare: boolean;
+  icon: {
+    type: string;
+    value: string;
+    color: string;
+  };
+  activityInfo: any;
+  toplistInfo: any;
+  dynamic: boolean;
+  labelDto: any;
+  labels: any;
+  detailRcmdTabOrpheus: string;
 }

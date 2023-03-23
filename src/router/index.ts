@@ -38,9 +38,9 @@ const router = createRouter({
               },
             },
             {
-              path: "fm",
-              name: "fm",
-              component: () => import("@/views/music/fm/index.vue"),
+              path: "dj",
+              name: "dj",
+              component: () => import("@/views/music/dj/index.vue"),
               meta: {
                 menu: "music",
                 title: "有声电台",
@@ -87,16 +87,6 @@ const router = createRouter({
                 keepAlive: true,
               },
             },
-            {
-              path: "exclusive",
-              name: "exclusive",
-              component: () => import("@/views/music/exclusive/index.vue"),
-              meta: {
-                menu: "music",
-                title: "独家放送",
-                keepAlive: true,
-              },
-            },
           ],
         },
         {
@@ -120,6 +110,11 @@ const router = createRouter({
           component: () => import("@/views/album/index.vue"),
         },
         {
+          path: "djProgram",
+          name: "djProgram",
+          component: () => import("@/views/dj/index.vue"),
+        },
+        {
           path: "video",
           name: "video",
           component: () => import("@/views/video/index.vue"),
@@ -128,6 +123,49 @@ const router = createRouter({
             title: "视频",
             keepAlive: true,
           },
+        },
+        {
+          path: "video",
+          name: "video",
+          component: () => import("@/views/video/index.vue"),
+          meta: {
+            menu: "video",
+            title: "视频",
+            keepAlive: true,
+          },
+          redirect: { name: "videoPicked" },
+          children: [
+            {
+              path: "videoPicked",
+              name: "videoPicked",
+              component: () => import("@/views/video/videoPicked/index.vue"),
+              meta: {
+                menu: "video",
+                title: "精选",
+                keepAlive: true,
+              },
+            },
+            {
+              path: "toplist",
+              name: "toplist",
+              component: () => import("@/views/video/toplist/index.vue"),
+              meta: {
+                menu: "video",
+                title: "排行榜",
+                keepAlive: true,
+              },
+            },
+            {
+              path: "library",
+              name: "library",
+              component: () => import("@/views/video/library/index.vue"),
+              meta: {
+                menu: "video",
+                title: "视频库",
+                keepAlive: true,
+              },
+            },
+          ],
         },
       ],
     },

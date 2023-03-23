@@ -14,20 +14,13 @@ onMounted(() => {
 });
 </script>
 <template>
-  <Title routeName="video" title="推荐MV" class="mt-4" />
+  <Title routeName="mv" title="推荐MV" class="mt-4" />
   <div class="grid grid-flow-row grid-cols-3 lg:grid-cols-5 gap-5">
     <template v-for="(item, index) in mvProgram" :key="item.id">
-      <div v-if="index < 5" @click="router.push({ name: 'mvDetail', query: { id: item.id } })">
+      <div v-if="index < 5" @click="router.push({ name: 'dj', query: { id: item.id } })">
         <CoverPlay :picUrl="item.picUrl" video :name="item.name" />
         <div class="truncate text-xs mt-2">{{ item.copywriter }}</div>
-        <div class="truncate text-xs mt-2 text-gray-400">
-          <template v-for="(artist, artistIndex) in item.artists" :key="artist.id">
-            <span @click="router.push({ name: 'artistDetail', query: { id: artist.id } })" class="hover-text">
-              {{ artist.name }}
-            </span>
-            <span v-if="artistIndex !== item.artists.length - 1"> / </span>
-          </template>
-        </div>
+        <div class="truncate text-xs mt-2 text-gray-400 hover-text">{{ item.artistName }}</div>
       </div>
     </template>
   </div>

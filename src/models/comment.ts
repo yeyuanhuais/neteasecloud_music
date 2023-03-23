@@ -54,3 +54,17 @@ export interface Comments {
   children: any;
   show: boolean;
 }
+export interface CommentsData {
+  code: number;
+  data: {
+    comments: Comments[];
+    commentsTitle: string;
+    currentComment: any;
+    currentCommentTitle: string;
+    cursor: string;
+    hasMore: boolean;
+    sortType: number;
+    style: string;
+    totalCount: number;
+  };
+}

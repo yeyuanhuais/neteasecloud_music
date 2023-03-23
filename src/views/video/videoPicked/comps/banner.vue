@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import type { Banner } from "@/models/banner";
+import { useCommonStore } from "@/stores/common";
 import { usePlayerStore } from "@/stores/player";
 import { Swiper, SwiperSlide } from "swiper/vue";
 import { Navigation, Pagination, Autoplay } from "swiper";
@@ -7,17 +9,21 @@ import "swiper/scss/navigation";
 import "swiper/scss/pagination";
 import "swiper/scss/autoplay";
 import { onMounted, toRefs } from "vue";
-import { useFmStore } from "@/stores/fm";
-import type { FmBanner } from "@/models/fm";
-const { fmBanner } = toRefs(useFmStore());
-const { getFmBanner } = useFmStore();
+import { useRouter } from "vue-router";
+const { banners } = toRefs(useCommonStore());
+const { getBanners } = useCommonStore();
 onMounted(() => {
-  getFmBanner();
+  getBanners();
 });
 const { play } = usePlayerStore();
-const onClick = (banner: FmBanner) => {
+const router = useRouter();
+const onClick = (banner: Banner) => {
   if (banner.targetType === 1) {
     play(banner.targetId);
+  } else if (banner.targetType === 1000) {
+    router.push({ name: "playlist", query: { id: banner.targetId } });
+  } else if (banner.targetType === 10) {
+    router.push({ name: "album", query: { id: banner.targetId } });
   }
 };
 </script>
@@ -32,8 +38,8 @@ const onClick = (banner: FmBanner) => {
     autoplay
     class="swiper-banner"
   >
-    <SwiperSlide v-for="item in fmBanner" :key="item.targetId" class="relative">
-      <img :src="item.pic" class="banner-image" @click="onClick(item)" />
+    <SwiperSlide v-for="item in banners" :key="item.bannerId" class="relative">
+      <img :src="item.imageUrl" class="banner-image" @click="onClick(item)" />
       <p class="absolute right-2.5 top-3 bg-white bg-opacity-70 rounded-l text-xs p-0.5">{{ item.typeTitle }}</p>
     </SwiperSlide>
   </Swiper>

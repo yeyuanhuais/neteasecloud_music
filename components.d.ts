@@ -11,7 +11,9 @@ declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     CommentItem: typeof import('./src/components/comments/commentItem.vue')['default']
     Comments: typeof import('./src/components/comments/index.vue')['default']
+    copy: typeof import('./src/components/songListItem copy.vue')['default']
     CoverPlay: typeof import('./src/components/coverPlay.vue')['default']
+    DjListItem: typeof import('./src/components/djListItem.vue')['default']
     ElAffix: typeof import('element-plus/es')['ElAffix']
     ElAvatar: typeof import('element-plus/es')['ElAvatar']
     ElBadge: typeof import('element-plus/es')['ElBadge']

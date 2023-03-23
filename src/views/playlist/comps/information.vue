@@ -24,7 +24,7 @@ defineProps<{
             </el-tag>
           </div>
         </div>
-        <div class="text-xs text-gray-500 leading-normal">
+        <div class="text-xs text-gray-400 leading-normal">
           <MoreText :text="playlist.description" :end="90" />
         </div>
       </div>

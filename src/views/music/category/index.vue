@@ -34,12 +34,9 @@ const catChange = (cat: string) => {
 const getData = async () => {
   pageData.loading = true;
   try {
-    const { playlists, lasttime, more } = await _axios.get<
-      {
-        playlists: PlaylistDetail[];
-      },
-      any
-    >("/top/playlist", { params: { limit: pageData.limit, before: pageData.before, cat: pageData.cat } });
+    const { playlists, lasttime, more } = await _axios.get<{
+      playlists: PlaylistDetail[];
+    }>("/top/playlist", { params: { limit: pageData.limit, before: pageData.before, cat: pageData.cat } });
     if (pageData.before <= 0) {
       list.value = playlists;
     } else {

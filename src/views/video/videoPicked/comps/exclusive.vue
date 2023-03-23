@@ -14,7 +14,7 @@ onMounted(() => {
 });
 </script>
 <template>
-  <Title routeName="video" title="独家放送" class="mt-2" />
+  <Title routeName="exclusive" title="独家放送" class="mt-2" />
   <div class="grid grid-flow-row grid-cols-2 lg:grid-cols-4 gap-5">
     <div v-for="item in personalizedPrivateContent" :key="item.id" @click="router.push({ name: 'mvDetail', query: { id: item.id } })">
       <CoverPlay :picUrl="item.sPicUrl" video :name="item.name" />

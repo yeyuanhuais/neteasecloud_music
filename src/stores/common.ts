@@ -7,8 +7,8 @@ export const useCommonStore = defineStore("common", () => {
   const banners = ref<Banner[]>([]);
   const getBanners = async () => {
     if (banners.value.length) return;
-    const { banners: data } = await _axios.get<{ banners: Banner[] }>("/banner", { params: { type: 0 } });
-    banners.value = data;
+    const { banners: data, code } = await _axios.get<{ banners: Banner[] }>("/banner", { params: { type: 0 } });
+    if (code === 200) banners.value = data;
   };
 
   return { banners, getBanners };

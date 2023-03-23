@@ -11,14 +11,14 @@ defineProps<{ comment: Comments }>();
   <div class="flex w-full">
     <el-avatar :src="comment.user.avatarUrl" class="w-1/12" />
     <div class="ml-5 w-11/12 pb-2">
-      <div class="text-gray-500">{{ comment.user.nickname }}</div>
+      <div class="text-gray-400">{{ comment.user.nickname }}</div>
       <div>
-        <div class="text-gray-500">
+        <div class="text-gray-400">
           <span>{{ dayjs(comment.time).format("YYYY 年 MM 月 DD 日 hh:mm") }}</span>
           <span class="ml-3" v-if="comment.ipLocation.location">来自{{ comment.ipLocation.location }}</span>
         </div>
         <div class="mt-2">{{ comment.content }}</div>
-        <div class="text-gray-500 flex my-2">
+        <div class="text-gray-400 flex my-2">
           <div class="flex items-center">
             <icon-park :icon="GoodTwo" />
             <span class="ml-1">{{ useNumberFormat(comment.likedCount) }}</span>

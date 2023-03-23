@@ -19,7 +19,7 @@ export function useFormatDuring(during: number) {
   const ss = s < 10 ? `0${s}` : s;
   return ii + ":" + ss;
 }
-
+/* ======== 数组转树形 ======== */
 export function listToTree(list: any[], key: string | number, parentKey: string | number, oneParent: any = 0) {
   const tree = list.filter(parent => {
     const branchArr = list.filter(child => parent[key] === child[parentKey]);
@@ -30,4 +30,22 @@ export function listToTree(list: any[], key: string | number, parentKey: string 
     return parent[parentKey] == oneParent;
   });
   return tree;
+}
+/* ======== 树形转数组 ======== */
+export function treeTransList(tree: any[] = [], childName = "children") {
+  // 设置临时数组，用来存放队列
+  let queen: any[] = [];
+  // 设置输出数组，用来存放要输出的一维数组
+  const result = [];
+  queen = queen.concat(tree);
+  // 对树对象进行广度优先的遍历
+  while (queen.length) {
+    const first = queen.shift();
+    if (first[childName]) {
+      queen = queen.concat(first[childName]);
+      delete first[childName];
+    }
+    result.push(first);
+  }
+  return result;
 }

@@ -10,5 +10,14 @@ export const useExclusiveStore = defineStore("exclusive", () => {
     const { result } = await _axios.get<{ result: PersonalizedPrivateContent[] }>("/personalized/privatecontent");
     personalizedPrivateContent.value = result;
   };
-  return { getPersonalizedPrivateContent, personalizedPrivateContent };
+  /* ======== 独家放送列表 ======== */
+  const getPersonalizedPrivateContentList = async ({ id, limit = 10, page = 1 }: { id: number; limit: number; page: number }) => {
+    const res = await _axios.get<{ code: number; count: number; more: boolean; result: PersonalizedPrivateContent[] }>("/personalized/privatecontent/list", {
+      params: { rid: id, limit, offset: (page - 1) * limit },
+    });
+    if (res.code === 200) {
+      return res;
+    }
+  };
+  return { getPersonalizedPrivateContent, personalizedPrivateContent, getPersonalizedPrivateContentList };
 });

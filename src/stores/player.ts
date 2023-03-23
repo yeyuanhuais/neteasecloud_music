@@ -33,7 +33,7 @@ export const usePlayerStore = defineStore("play", {
       return state.playList.length;
     },
     thisIndex: state => {
-      return state.playList.findIndex(song => song.id === state.id);
+      return state.playList.findIndex(song => song?.id === state.id);
     },
     nextSong(state): Song {
       const { thisIndex, playListCount } = this;
@@ -62,7 +62,7 @@ export const usePlayerStore = defineStore("play", {
     async play(id: number) {
       if (id === this.id) return;
       this.isPlaying = false;
-      const { data } = await _axios.get<{ data: SongUrl[] }, any>("/song/url/v1", { params: { id, level: "standard" } });
+      const { data } = await _axios.get<{ data: SongUrl[] }>("/song/url/v1", { params: { id, level: "standard" } });
       const songFirst = data.first(); //取数组第一个
       if (!data || data.length == 0) {
         return false;
@@ -153,7 +153,10 @@ export const usePlayerStore = defineStore("play", {
     },
     /* ======== 播放暂停 ======== */
     togglePlay() {
-      if (!this.song.id) return;
+      if (!this.song.id) {
+        this.song = this.playList.first();
+        this.play(this.song.id);
+      }
       this.isPlaying = !this.isPlaying;
       if (!this.isPlaying) {
         this.audio.pause();

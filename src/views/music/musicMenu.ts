@@ -15,7 +15,7 @@ export function useMusicMenu() {
     },
     {
       label: "有声电台",
-      name: "fm",
+      name: "dj",
     },
     {
       label: "排行",
@@ -32,10 +32,6 @@ export function useMusicMenu() {
     {
       label: "数字专辑",
       name: "digital",
-    },
-    {
-      label: "独家放送",
-      name: "exclusive",
     },
   ];
   const router = useRouter();

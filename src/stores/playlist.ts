@@ -10,7 +10,7 @@ export const usePlaylistStore = defineStore("playlist", () => {
   /* ======== 推荐歌单 ======== */
   const getPlaylistProgram = async (limit: number = 10, offset: number = 0) => {
     if (playlistProgram.value.length > 0) return;
-    const { result } = await _axios.get<{ result: PlaylistProgram[] }>("/personalized", { params: { limit: 5 } });
+    const { result } = await _axios.get<{ result: PlaylistProgram[] }>("/personalized", { params: { limit: 6 } });
     playlistProgram.value = result;
   };
   /* ======== 获取歌单所有歌曲 ======== */

@@ -24,10 +24,18 @@ const playAll = () => {
 
 onMounted(async () => {
   const id: number = Number(route.query.id);
-  const { playlist: dataPlay } = await _axios.get<
-    { playlist: PlaylistDetail; relatedVideos: any; resEntrance: any; sharedPrivilege: any; songFromUsers: any; urls: any; privileges: any; code: number; fromUserCount: number; fromUsers: any },
-    any
-  >("/playlist/detail", { params: { id, s: 8 } });
+  const { playlist: dataPlay } = await _axios.get<{
+    playlist: PlaylistDetail;
+    relatedVideos: any;
+    resEntrance: any;
+    sharedPrivilege: any;
+    songFromUsers: any;
+    urls: any;
+    privileges: any;
+    code: number;
+    fromUserCount: number;
+    fromUsers: any;
+  }>("/playlist/detail", { params: { id, s: 8 } });
   playlist.value = dataPlay;
   const dataSong = await getPlaylistTrackAll(id);
   songs.value = dataSong;
@@ -40,7 +48,7 @@ onMounted(async () => {
       <el-tabs class="mt-3" v-model="tabValue">
         <el-tab-pane lazy :label="`歌曲 ${useNumberFormat(playlist.trackCount)}`" name="tracks"><SongList :songs="songs || []" /></el-tab-pane>
         <el-tab-pane lazy :label="`评论 ${useNumberFormat(playlist.commentCount)}`" name="comments">
-          <Comments :id="Number(route.query.id)" type="playlist" />
+          <Comments :id="Number(route.query.id)" :type="2" />
         </el-tab-pane>
       </el-tabs>
     </div>

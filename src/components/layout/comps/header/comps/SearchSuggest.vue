@@ -37,6 +37,12 @@ const routerPush = (name: string, id: number) => {
         <div v-for="item in suggestData.songs" :key="item.id" @click="play(item.id)" class="py-1.5 px-2.5 hover-bg-main text-xs cursor-pointer">
           <span class="text-emerald-500">{{ item.name }}</span>
           <span class="pl-1"> - {{ item.artists.first()?.name }}</span>
+          <template v-for="(artistItem, artistIndex) in item.artists" :key="artistItem.id">
+            <span>
+              {{ artistItem.name }}
+            </span>
+            <span v-if="artistIndex !== item.artists.length - 1"> / </span>
+          </template>
         </div>
       </template>
       <template v-if="order === 'albums'">
