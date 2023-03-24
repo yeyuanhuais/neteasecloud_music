@@ -35,7 +35,10 @@ const onClick = (banner: DjBanner) => {
     class="swiper-banner"
   >
     <SwiperSlide v-for="item in djBanner" :key="item.targetId" class="relative" @click="router.push({ name: 'djProgram', query: { id: item.targetId } })">
-      <img :src="item.pic" class="banner-image" @click="onClick(item)" />
+      <div class="relative">
+        <img :src="item.pic" class="banner-image" @click="onClick(item)" />
+        <span v-if="item.exclusive" class="absolute top-3 left-1 rounded-xl px-2 py-0.5 text-xs text-white" :style="{ backgroundColor: '#FF3A3A' }">独家</span>
+      </div>
       <p class="absolute right-2.5 top-3 bg-white bg-opacity-70 rounded-l text-xs p-0.5">{{ item.typeTitle }}</p>
     </SwiperSlide>
   </Swiper>

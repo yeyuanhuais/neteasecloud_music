@@ -115,6 +115,16 @@ const router = createRouter({
           component: () => import("@/views/dj/index.vue"),
         },
         {
+          path: "catelist",
+          name: "catelist",
+          component: () => import("@/views/dj/catelist.vue"),
+        },
+        {
+          path: "artistDetail",
+          name: "artistDetail",
+          component: () => import("@/views/artist/index.vue"),
+        },
+        {
           path: "video",
           name: "video",
           component: () => import("@/views/video/index.vue"),
@@ -146,9 +156,9 @@ const router = createRouter({
               },
             },
             {
-              path: "toplist",
-              name: "toplist",
-              component: () => import("@/views/video/toplist/index.vue"),
+              path: "videoToplist",
+              name: "videoToplist",
+              component: () => import("@/views/video/videoToplist/index.vue"),
               meta: {
                 menu: "video",
                 title: "排行榜",

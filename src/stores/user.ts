@@ -31,6 +31,7 @@ export const useUserStore = defineStore("user", () => {
         showClose: true,
         message: msg,
         type: "error",
+        grouping: true,
       });
     }
   };
@@ -44,6 +45,7 @@ export const useUserStore = defineStore("user", () => {
         showClose: true,
         message: msg,
         type: "error",
+        grouping: true,
       });
     }
   };

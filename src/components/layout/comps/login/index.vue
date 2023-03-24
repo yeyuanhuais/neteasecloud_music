@@ -70,6 +70,7 @@ const sendCaptcha = (formEl: FormInstance | undefined) => {
           showClose: true,
           message: msg,
           type: "warning",
+          grouping: true,
         });
       }
     }
@@ -106,6 +107,7 @@ const loopQrCheck = async (key: string) => {
         showClose: true,
         message: "授权登录成功",
         type: "success",
+        grouping: true,
       });
       showLogin.value = false;
       status.value = "";
@@ -118,6 +120,7 @@ const loopQrCheck = async (key: string) => {
         showClose: true,
         message: "二维码已过期，请刷新",
         type: "warning",
+        grouping: true,
       });
       timer = undefined;
     }

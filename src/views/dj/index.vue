@@ -1,18 +1,20 @@
 <script setup lang="ts">
 import { onMounted, reactive, ref } from "vue";
 import Info from "./comps/information.vue";
-import { useRoute } from "vue-router";
+import { useRoute, useRouter } from "vue-router";
 import DjListItem from "@/components/djListItem.vue";
 import { useNumberFormat } from "@/plugins/utils";
 import Comments from "@/components/comments/index.vue";
 import { useDjStore } from "@/stores/dj";
 import type { DjDetail, DjProgramRecommend } from "@/models/dj";
+import { ElMessage } from "element-plus";
 
+const router = useRouter();
+const route = useRoute();
 const djDetail = ref<DjDetail>();
 const programList = ref<DjProgramRecommend[]>([]);
 const programTotal = ref<number>(0);
 const tab = ref("songs");
-const route = useRoute();
 const { getDjDetail, getDjProgram } = useDjStore();
 const id = Number(route.query.id);
 
@@ -54,7 +56,16 @@ const loadMore = () => {
   getProgramData();
 };
 onMounted(async () => {
-  djDetail.value = await getDjDetail(id);
+  djDetail.value = await getDjDetail(id).catch(err => {
+    router.back();
+    ElMessage({
+      showClose: true,
+      message: err.msg,
+      type: "warning",
+      grouping: true,
+    });
+  });
+
   getProgramData();
 });
 </script>

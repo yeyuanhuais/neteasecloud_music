@@ -1,17 +1,23 @@
-import axios, { AxiosError } from "axios";
+import axios, { AxiosError, type AxiosResponse } from "axios";
 import { ElMessage } from "element-plus";
 
 // 处理  类型“AxiosResponse<any, any>”上不存在属性“”。ts(2339) 脑壳疼！关键一步。
-declare module "axios" {
-  interface AxiosResponse<T = any> {
-    // 这里追加你的参数
-    [propName: string]: any;
-  }
-  interface AxiosInstance {
-    (config?: AxiosRequestConfig): Promise<any>;
-  }
-  export function create(config?: AxiosRequestConfig): AxiosInstance;
-}
+// declare module "axios" {
+//   interface AxiosResponse<T = any, D = any> {
+//     data: T;
+//     status: number;
+//     statusText: string;
+//     headers: AxiosResponseHeaders;
+//     config: AxiosRequestConfig<D>;
+//     request?: any;
+//     // 这里追加你的参数
+//     [propName: string]: any;
+//   }
+//   interface AxiosInstance {
+//     (config?: AxiosRequestConfig): Promise<any>;
+//   }
+//   export function create(config?: AxiosRequestConfig): AxiosInstance;
+// }
 
 const _axios = axios.create({
   baseURL: "/api",
@@ -34,7 +40,7 @@ _axios.interceptors.request.use(
 );
 
 _axios.interceptors.response.use(
-  response => {
+  (response: AxiosResponse) => {
     const res = response.data;
     return res;
   },
@@ -68,8 +74,9 @@ _axios.interceptors.response.use(
       showClose: true,
       message,
       type: "error",
+      grouping: true,
     });
-    return Promise.reject(error);
+    return Promise.reject(error.response?.data);
   }
 );
 export default _axios;

@@ -65,7 +65,7 @@ onMounted(getData);
   <PlaylistHot @cat-change="catChange" />
   <div class="py-5 text-xl">{{ pageData.cat }} 歌单</div>
 
-  <div class="gap-5 grid grid-flow-row grid-cols-3 lg:grid-cols-5 2xl:grid-cols-7">
+  <div class="gap-5 grid grid-flow-row grid-cols-3 lg:grid-cols-6 2xl:grid-cols-7">
     <div v-for="(item, index) in list" :key="index" :class="{ 'item-1': index === 0 }">
       <CoverPlay :name="item.name" :picUrl="item.coverImgUrl" :playCount="item.playCount" showPlayCount @click="() => getTrackAll(item.id)" />
       <div class="mt-2 text-sm text-main leading-5 hover-text" @click="router.push({ name: 'playlist', query: { id: item.id } })">{{ item.name }}</div>

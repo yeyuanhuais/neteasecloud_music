@@ -15,9 +15,9 @@ onMounted(() => {
 </script>
 <template>
   <Title routeName="newMusic" title="推荐新音乐" class="mt-4" />
-  <div class="grid grid-flow-row grid-cols-3 lg:grid-cols-5 gap-5">
-    <template v-for="(item, index) in newMusicProgram" :key="item.id">
-      <div v-if="index < 5" @click="router.push({ name: 'dj', query: { id: item.id } })">
+  <div class="grid grid-flow-row grid-cols-3 lg:grid-cols-6 gap-5">
+    <template v-for="item in newMusicProgram" :key="item.id">
+      <div @click="router.push({ name: 'dj', query: { id: item.id } })">
         <CoverPlay :picUrl="item.picUrl" :name="item.name" />
         <div class="truncate text-xs mt-2">{{ item.name }}</div>
         <div class="truncate text-xs mt-2 text-gray-400">

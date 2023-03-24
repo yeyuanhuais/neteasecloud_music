@@ -25,7 +25,7 @@ export interface DjBanner {
   url: string;
 }
 
-export interface DjCatelist {
+export interface DjCateList {
   id: number;
   name: string;
   pic56x56Id: number;
