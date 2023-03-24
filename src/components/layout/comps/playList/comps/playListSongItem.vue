@@ -7,7 +7,7 @@ import { Youtube } from "@icon-park/vue-next";
 import { useRouter } from "vue-router";
 
 const router = useRouter();
-defineProps<{ song: Song & MainSong; active: boolean }>();
+defineProps<{ song:(Song & MainSong) | any; active: boolean }>();
 </script>
 <template>
   <div class="flex p-2.5 border-b border-b-slate-50 dark:border-b-stone-800 hover-bg-view" :class="{ active: active }">

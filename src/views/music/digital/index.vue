@@ -1,9 +1,11 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import StyleDigital from "./comps/style.vue";
+import New from "./comps/new.vue";
+</script>
 <template>
-  <div class="bg-opacity-70 h-screen flex flex-col">
-    <el-scrollbar>
-      <div>discover</div>
-    </el-scrollbar>
+  <div>
+    <New />
+    <StyleDigital />
   </div>
 </template>
 

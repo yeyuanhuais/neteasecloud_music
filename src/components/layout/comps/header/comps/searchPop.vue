@@ -18,7 +18,7 @@ const hotClick = (text: string) => {
   showSearchView.value = true;
 };
 onMounted(async () => {
-  const { data } = await _axios.get<{ data: SearchHotDetail[] }>("/search/hot/detail");
+  const { data }: { data: SearchHotDetail[] } = await _axios.get("/search/hot/detail");
   searchHot.value = data;
 });
 </script>

@@ -17,7 +17,7 @@ export const useSearchStore = defineStore("search", {
   },
   actions: {
     async suggest() {
-      const { result } = await _axios.get<{ result: SearchSuggest }>("/search/suggest", { params: { keywords: this.searchKeyword } });
+      const { result }: { result: SearchSuggest }= await _axios.get("/search/suggest", { params: { keywords: this.searchKeyword } });
       this.suggestData = result;
     },
   },

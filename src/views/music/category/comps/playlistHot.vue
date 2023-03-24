@@ -25,14 +25,17 @@ const tagsActive = ref("全部");
 const subTagsActive = ref("");
 
 onMounted(async () => {
-  const { categories, sub } = await _axios.get<{
+  const {
+    categories,
+    sub,
+  }: {
     all: PlaylistHighqualityTag;
-    categories: { number: string };
+    categories: { [key: number]: string };
     sub: PlaylistHighqualityTag[];
-  }>("/playlist/catlist");
+  } = await _axios.get("/playlist/catlist");
   let catList: PlaylistHighqualityTag[] = [];
   for (const key in categories) {
-    catList.push({ category: -1, name: categories[key], childId: Number(key), children: [] });
+    catList.push({ category: -1, name: categories[Number(key)], childId: Number(key), children: [] });
   }
   sub.forEach((element: PlaylistHighqualityTag) => {
     catList = catList.map(item => {

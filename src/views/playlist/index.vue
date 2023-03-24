@@ -24,7 +24,9 @@ const playAll = () => {
 
 onMounted(async () => {
   const id: number = Number(route.query.id);
-  const { playlist: dataPlay } = await _axios.get<{
+  const {
+    playlist: dataPlay,
+  }: {
     playlist: PlaylistDetail;
     relatedVideos: any;
     resEntrance: any;
@@ -35,7 +37,7 @@ onMounted(async () => {
     code: number;
     fromUserCount: number;
     fromUsers: any;
-  }>("/playlist/detail", { params: { id, s: 8 } });
+  } = await _axios.get("/playlist/detail", { params: { id, s: 8 } });
   playlist.value = dataPlay;
   const dataSong = await getPlaylistTrackAll(id);
   songs.value = dataSong;

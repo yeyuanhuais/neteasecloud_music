@@ -17,7 +17,7 @@ const route = useRoute();
 const id = Number(route.query.id);
 
 onMounted(async () => {
-  const { album, songs } = await _axios.get<{ album: Album; songs: Song[] }>("album", { params: { id } });
+  const { album, songs }: { album: Album; songs: Song[] } = await _axios.get("album", { params: { id } });
   albumData.value = album;
   songList.value = songs;
 });

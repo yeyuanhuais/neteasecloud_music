@@ -64,7 +64,7 @@ const sendCaptcha = (formEl: FormInstance | undefined) => {
       } else {
         return;
       }
-      const { code, msg } = await _axios.get<{ code: number; msg: string; data: boolean }>("/captcha/sent", { params: { phone: form.phone } });
+      const { code, msg }: { code: number; msg: string; data: boolean } = await _axios.get("/captcha/sent", { params: { phone: form.phone } });
       if (code !== 200) {
         ElMessage({
           showClose: true,
@@ -80,7 +80,7 @@ const sendCaptcha = (formEl: FormInstance | undefined) => {
 /* ======== 二维码 key 生成接口 ======== */
 const getQrKey = async () => {
   isLoading.value = true;
-  const { data, code } = await _axios.get<{ code: number; data: { code: number; unikey: string } }>("/login/qr/key");
+  const { data, code }: { code: number; data: { code: number; unikey: string } } = await _axios.get("/login/qr/key");
   if (code === 200) {
     qrKey.value = data.unikey;
     getQrCreate(data.unikey);
@@ -88,7 +88,7 @@ const getQrKey = async () => {
 };
 /* ======== 二维码生成接口 ======== */
 const getQrCreate = async (key: string) => {
-  const { data, code } = await _axios.get<{ code: number; data: { qrimg: string; qrurl: string } }>("/login/qr/create", { params: { key, qrimg: true } });
+  const { data, code }: { code: number; data: { qrimg: string; qrurl: string } } = await _axios.get("/login/qr/create", { params: { key, qrimg: true } });
   if (code === 200) {
     qrCreateUrl.value = data.qrimg;
     isLoading.value = false;
@@ -98,7 +98,7 @@ const getQrCreate = async (key: string) => {
 /* ======== 二维码检测扫码状态接口 ======== */
 const loopQrCheck = async (key: string) => {
   timer = setInterval(async () => {
-    const { code, cookie } = await _axios.get<{ code: number; cookie: string; message: string; avatarUrl: string; nickname: string }>("/login/qr/check", { params: { key } });
+    const { code, cookie }: { code: number; cookie: string; message: string; avatarUrl: string; nickname: string } = await _axios.get("/login/qr/check", { params: { key } });
     if (!timer) return;
     status.value = code;
     if (code === 803) {

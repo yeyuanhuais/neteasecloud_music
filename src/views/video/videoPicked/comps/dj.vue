@@ -15,7 +15,7 @@ onMounted(() => {
   getDjRadio();
 });
 const getProgramAll = async (id: number) => {
-  const { programs } = await getDjProgram({ id, limit: 99999 });
+  const { programs } = await getDjProgram({ id, limit: 99999, page: 1 });
   const mainSongs = programs.map((item: { mainSong: any }) => item.mainSong);
   pushPlayList(true, ...mainSongs);
   play(mainSongs.first().id);

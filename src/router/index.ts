@@ -123,6 +123,11 @@ const router = createRouter({
           path: "artistDetail",
           name: "artistDetail",
           component: () => import("@/views/artist/index.vue"),
+          meta: {
+            menu: "music",
+            title: "歌手详情",
+            keepAlive: true,
+          },
         },
         {
           path: "video",

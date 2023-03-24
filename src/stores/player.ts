@@ -62,7 +62,7 @@ export const usePlayerStore = defineStore("play", {
     async play(id: number) {
       if (id === this.id) return;
       this.isPlaying = false;
-      const { data } = await _axios.get<{ data: SongUrl[] }>("/song/url/v1", { params: { id, level: "standard" } });
+      const { data } :{ data: SongUrl[] }= await _axios.get("/song/url/v1", { params: { id, level: "standard" } });
       const songFirst = data.first(); //取数组第一个
       if (!data || data.length == 0) {
         return false;
@@ -78,7 +78,7 @@ export const usePlayerStore = defineStore("play", {
     },
     /* ======== 获取播放详情 ======== */
     async songDetail() {
-      const { songs } = await _axios.get<{ songs: Song[] }>("/song/detail", { params: { ids: this.id } });
+      const { songs } :{ songs: Song[] }= await _axios.get("/song/detail", { params: { ids: this.id } });
       this.song = songs.first();
       this.pushPlayList(false, this.song);
     },

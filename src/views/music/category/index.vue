@@ -18,14 +18,14 @@ const pageData = reactive({
   init: false,
   loading: false,
   limit: 35,
-  before: 0,
+  before: "",
   more: false,
   cat: "全部",
 });
 
 const catChange = (cat: string) => {
   pageData.cat = cat;
-  pageData.before = 0;
+  pageData.before = "";
   pageData.more = false;
 
   getData();
@@ -34,10 +34,16 @@ const catChange = (cat: string) => {
 const getData = async () => {
   pageData.loading = true;
   try {
-    const { playlists, lasttime, more } = await _axios.get<{
+    const {
+      playlists,
+      lasttime,
+      more,
+    }: {
       playlists: PlaylistDetail[];
-    }>("/top/playlist", { params: { limit: pageData.limit, before: pageData.before, cat: pageData.cat } });
-    if (pageData.before <= 0) {
+      more: boolean;
+      lasttime: string;
+    } = await _axios.get("/top/playlist", { params: { limit: pageData.limit, before: pageData.before, cat: pageData.cat } });
+    if (!pageData.before) {
       list.value = playlists;
     } else {
       list.value?.push(...playlists);

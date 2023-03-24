@@ -37,6 +37,14 @@ export const useArtistStore = defineStore("artist", () => {
     if (res.code === 200) return res;
   };
 
+  /* ======== 歌手热门 50 首歌曲 ======== */
+  const getArtistHotSongs = async (id: number) => {
+    const res: { code: number; songs: Song[] } | any = await _axios.get("/artist/top/song", {
+      params: { id: id },
+    });
+
+    if (res.code === 200) return res;
+  };
   /* ======== 获取歌手 mv ======== */
   const getArtistMv = async (id: number, limit: number = 10, offset: number = 0) => {
     const res: { code: number; mvs: Mv[] } | any = await _axios.get("/artist/mv", {
@@ -55,11 +63,19 @@ export const useArtistStore = defineStore("artist", () => {
   };
   /* ======== 获取歌手专辑 ======== */
   const getArtistAlbum = async (id: number, limit: number = 10, offset: number = 0) => {
-    const res: { code: number; hotAlbums: Album[] } | any = await _axios.get("artist/album", {
+    const res: { code: number; hotAlbums: Album[] } | any = await _axios.get("/artist/album", {
       params: { id: id, limit: limit, offset: offset },
     });
 
     if (res.code === 200) return res;
   };
-  return { getArtistList, getArtistDetail, getArtistSongs, getArtistMv, getArtistDesc, getArtistAlbum };
+  /* ======== 获取相似歌手 ======== */
+  const getSimiArtist = async (id: number) => {
+    const res: { code: number; artists: Artist[] } | any = await _axios.get("/simi/artist", {
+      params: { id: id },
+    });
+
+    if (res.code === 200) return res;
+  };
+  return { getArtistList, getArtistDetail, getArtistSongs, getArtistMv, getArtistDesc, getArtistAlbum, getArtistHotSongs, getSimiArtist };
 });
