@@ -8,7 +8,7 @@ import Anchor from "./comps/anchor.vue";
 <template>
   <div>
     <Banner />
-    <DjCateList />
+    <DjCateList  />
     <Show />
     <Rank />
     <Anchor />
